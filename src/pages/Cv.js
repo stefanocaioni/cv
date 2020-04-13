@@ -5,10 +5,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import FiberManualRecordOutlinedIcon from '@material-ui/icons/FiberManualRecordOutlined';
+import Link from '@material-ui/core/Link';
+
+import { jobs } from '../jobs';
+import { stack } from '../stack';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { jobs } from '../jobs';
-import { Link } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -84,21 +86,15 @@ const Cv = () => {
         Technologies
       </Typography>
       <List className={classes.list}>
-        <ListItem className={classes.listItem}>
-          <ListItemText primary='JS, Typescript' />
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <ListItemText primary='React, Angular, Vue' />
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <ListItemText primary='HTML, CSS, SASS/SMACSS/BEM/TailwindCSS' />
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <ListItemText primary='CSS-in-JS' />
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <ListItemText primary='RESTful API' />
-        </ListItem>
+        {
+          stack.map((s, i) => {
+            return (
+              <ListItem className={classes.listItem}>
+                <ListItemText primary={s} />
+              </ListItem>
+            )
+          })
+        }
       </List>
 
       <Typography

@@ -11,9 +11,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  title: {
-    flexGrow: 1,
-  },
   toolbar: {
     display: 'flex',
     justifyContent: 'flex-end'
