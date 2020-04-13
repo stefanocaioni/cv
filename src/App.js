@@ -46,12 +46,47 @@ function App() {
         marginBottom: 40
       },
       subtitle1: {
-        fontSize: 30,
+        fontSize: 22,
         fontWeight: 'bold',
         marginBottom: 30
       },
       subtitle2: {
         fontSize: 20,
+      }
+    },
+    textLink: {
+      position: 'relative',
+      display: 'inline-block',
+      padding: '3px 0',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        width: '100%',
+        height: '2px',
+        bottom: '0',
+        left: '0',
+        backgroundColor: '#3f51b5',
+        opacity: '0.2'
+      },
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        width: '100%',
+        height: '2px',
+        bottom: '0',
+        left: '0',
+        backgroundColor: '#3f51b5',
+        transform: 'scaleX(0)',
+        transformOrigin: 'bottom right',
+        transition: 'transform 0.3s'
+      },
+      '&:hover': {
+        opacity: 0.8,
+        textDecoration: 'none',
+        '&::after': {
+          transformOrigin: 'bottom left',
+          transform: 'scaleX(1)'
+        }
       }
     },
   });

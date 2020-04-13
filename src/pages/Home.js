@@ -10,9 +10,41 @@ const useStyles = makeStyles((theme) => ({
   copyMain: {
     marginBottom: 60
   },
-  divider: {
-    marginBottom: 60
-  }
+  textLink: {
+    position: 'relative',
+    display: 'inline-block',
+    padding: '2px 0',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      width: '100%',
+      height: '2px',
+      bottom: '0',
+      left: '0',
+      backgroundColor: '#3f51b5',
+      opacity: '0.2'
+    },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      width: '100%',
+      height: '2px',
+      bottom: '0',
+      left: '0',
+      backgroundColor: '#3f51b5',
+      transform: 'scaleX(0)',
+      transformOrigin: 'bottom right',
+      transition: 'transform 0.3s'
+    },
+    '&:hover': {
+      opacity: 0.8,
+      textDecoration: 'none',
+      '&::after': {
+        transformOrigin: 'bottom left',
+        transform: 'scaleX(1)'
+      }
+    }
+  },
 }));
 
 const Home = () => {
@@ -32,9 +64,9 @@ const Home = () => {
       </Typography>
 
       <Typography className={classes.copyMain}>
-        You can check my <Link color='primary' href='/cv'>CV here</Link>
+        You can check my <Link className={classes.textLink} color='primary' href='/cv'>CV here</Link>
         <br />
-        Or you can take a look at what I'm doing right <Link color='primary' href='/now'>NOW</Link>
+        Or you can take a look at what I'm doing right <Link className={classes.textLink} color='primary' href='/now'>NOW</Link>
       </Typography>
     </>
   )

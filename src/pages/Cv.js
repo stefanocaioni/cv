@@ -14,21 +14,55 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  title: {
-    flexGrow: 1,
+  subtitle1: {
+    marginBottom: 8
   },
-  toolbar: {
-    display: 'flex',
-    justifyContent: 'flex-end'
-  },
-  appbar: {
-    marginBottom: 80
+  textLink: {
+    position: 'relative',
+    display: 'inline-block',
+    padding: '2px 0',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      width: '100%',
+      height: '2px',
+      bottom: '0',
+      left: '0',
+      backgroundColor: '#3f51b5',
+      opacity: '0.2'
+    },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      width: '100%',
+      height: '2px',
+      bottom: '0',
+      left: '0',
+      backgroundColor: '#3f51b5',
+      transform: 'scaleX(0)',
+      transformOrigin: 'bottom right',
+      transition: 'transform 0.3s'
+    },
+    '&:hover': {
+      opacity: 0.8,
+      textDecoration: 'none',
+      '&::after': {
+        transformOrigin: 'bottom left',
+        transform: 'scaleX(1)'
+      }
+    }
   },
   list: {
-    marginBottom: 60
+    marginBottom: 10
   },
   listItem: {
     padding: 0,
+    marginBottom: 4
+  },
+  listItemText: {
+    fontSize: 18,
+    lineHeight: 1.6,
+    opacity: 0.9,
   },
   listItemIcon: {
     minWidth: 30
@@ -77,11 +111,14 @@ const Cv = () => {
         jobs.map((job, i) => {
           return (
             <Fragment key={i}>
-              <Typography className={classes.copyMain}>
+              <Typography
+                className={classes.subtitle1}
+                variant='subtitle1'
+                component='h3'>
                 {
                   job.url 
                   ? 
-                    <Link href={job.url} target='_blank'>
+                    <Link href={job.url} target='_blank' className={classes.textLink}>
                       <strong>{job.role}</strong>
                     </Link>
                   : <strong>{job.role}</strong>
@@ -105,12 +142,39 @@ const Cv = () => {
                   return (
                     <ListItem className={classes.listItem}>
                       <ListItemIcon className={classes.listItemIcon}>
-                        <FiberManualRecordOutlinedIcon fontSize='inherit' />
+                        <FiberManualRecordOutlinedIcon fontSize='inherit' color='primary' />
                       </ListItemIcon>
-                      <ListItemText primary={a} />
+                      <ListItemText
+                        classes={{primary:classes.listItemText}}
+                        primary={a} />
                     </ListItem>
                   )
                 }) : ''
+              }
+              {
+                job.links
+                  ?
+                    <List className={classes.list}>
+                      <Typography>Some of the pages I've worked on:</Typography>
+                      {
+                        job.links.map((link, i) => {
+                          return (
+                            <ListItem className={classes.listItem} key={i}>
+                              <ListItemIcon className={classes.listItemIcon}>
+                                <FiberManualRecordOutlinedIcon fontSize='inherit' color='primary' />
+                              </ListItemIcon>
+                              <Link
+                                className={`${classes.listItemText} ${classes.textLink}`}
+                                href={link} 
+                                target='_blank'>
+                                {link}
+                              </Link>
+                            </ListItem>
+                          )
+                        })
+                      }
+                    </List>
+                  : ''
               }
               </List>
             </Fragment>
