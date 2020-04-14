@@ -92,7 +92,8 @@ export default withStyles(styles, { withTheme: true })(class extends Component {
           Creating
         </Typography>
         <Typography className={classes.copyMain}>
-          As well as coding this website I'm also working on a Wordpress theme to use for my blogs. I'm coding it using React + Graphql, using Wordpress as a headless CMS.
+          As well as coding this website I'm also working on a Wordpress theme to use for my blogs.
+          I'm coding it using React + Graphql, using Wordpress as a headless CMS.
           Doing server-side rendering for the theme will greatily improve SEO and accessibilty.
         </Typography>
 
