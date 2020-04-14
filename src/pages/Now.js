@@ -8,12 +8,7 @@ const API =
   'https://www.googleapis.com/books/v1/users/108832331148662612349/bookshelves/3/volumes';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  copyMain: {
-    marginBottom: 60,
-  },
+  copyMain: theme.copyMain,
   card: {
     display: 'flex',
     alignItems: 'center',
@@ -64,7 +59,6 @@ export default withStyles(styles, { withTheme: true })(class extends Component {
           console.log('data: ', data.lovedtracks.track);
         });
   }
-
   
   render() {
     const { isLoading, books, songs } = this.state;
@@ -132,7 +126,7 @@ export default withStyles(styles, { withTheme: true })(class extends Component {
                     <Typography variant='overline' color='textSecondary'>
                       {book.volumeInfo.authors.map((author, i) => {
                         return (
-                        <span>{author}</span>
+                          <span key={i}>{author}</span>
                         )
                       })}
                     </Typography>

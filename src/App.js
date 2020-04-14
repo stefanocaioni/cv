@@ -8,31 +8,38 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Cv from './pages/Cv';
 import Now from './pages/Now';
+import indigo from '@material-ui/core/colors/indigo';
 
 import 'typeface-exo-2';
 
-function App() {
+const App = () => {
   const theme = createMuiTheme({
-    body: {
-      backgroundColor: 'rgb(248, 249, 252)'
+    palette: {
+      background: {
+        default: 'rgb(248, 249, 252)'
+      },
+      primary: {
+        light: indigo[50],
+        main: indigo[700],
+        dark: indigo[900]
+      },
+      type: 'light'
     },
     typography: {
       fontFamily: [
         '-apple-system',
         'BlinkMacSystemFont',
         '"Segoe UI"',
-        'Roboto',
         '"Helvetica Neue"',
         'Arial',
         'sans-serif',
-        '"Apple Color Emoji"',
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',
       ].join(','),
       body1: {
         fontSize: 20,
         lineHeight: 1.8,
-        color: 'rgb(5, 17, 46)'
+        //color: 'rgb(5, 17, 46)'
       },
       h1: {
         marginBottom: 40,
@@ -54,10 +61,13 @@ function App() {
         fontSize: 20,
       }
     },
+    copyMain: {
+      marginBottom: 60
+    },
     textLink: {
       position: 'relative',
       display: 'inline-block',
-      padding: '3px 0',
+      padding: '2px 0',
       '&::before': {
         content: '""',
         position: 'absolute',
@@ -93,19 +103,24 @@ function App() {
 
   return (
     <>
-      <CssBaseline />
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <BrowserRouter>
           <Container maxWidth='sm'>
             <Nav />
-            <div className='content'>
+            <>
               <Route exact path='/' component={Home} />
               <Route path='/cv' component={Cv} />
               <Route path='/now' component={Now} />
-            </div>
+            </>
             <Footer />
           </Container>
         </BrowserRouter>
+          {/* <Container maxWidth='sm'>
+            <Nav />
+            <Home />
+            <Footer />
+          </Container> */}
       </ThemeProvider>
     </>
   );

@@ -7,10 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
+const useStyles = makeStyles(theme => ({
   toolbar: {
     display: 'flex',
     justifyContent: 'flex-end'
