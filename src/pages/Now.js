@@ -31,7 +31,7 @@ const styles = theme => ({
   },
 });
 
-export default withStyles(styles, { withTheme: true })(class extends Component {
+export default withStyles(styles)(class extends Component {
   state = {
     isLoading: false,
     books: [],

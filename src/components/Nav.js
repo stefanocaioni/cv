@@ -6,7 +6,6 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { Switch, FormControlLabel } from '@material-ui/core';
 
-
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +23,8 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'uppercase',
     fontSize: 10,
     letterSpacing: 2
-  }
+  },
+  textLink: theme.textLink,
 }));
 
 const Nav = ({ onSwitchTheme }) => {
@@ -35,8 +35,8 @@ const Nav = ({ onSwitchTheme }) => {
       <AppBar
         className={classes.appbar}
         elevation={0}
-        position="static"
-        color="transparent">
+        position='static'
+        color='transparent'>
 
         <Toolbar
           className={classes.toolbar}
@@ -50,15 +50,16 @@ const Nav = ({ onSwitchTheme }) => {
             label={<Typography className={classes.label}>
               Switch theme
             </Typography>} />
-          <Button color="primary" href="/cv">CV</Button>
-          <Button color="primary" href="/now">Now</Button>
+          <Button color='primary' href='/cv'>CV</Button>
+          <Button color='primary' href='/now'>Now</Button>
         </Toolbar>
       </AppBar>
       <Typography
-        className={classes.logo}
+        className={classes.textLink}
         variant='h1'
         component='h1'>
-        <Link href='/'>
+        <Link href='/'
+          underline='none'>
           Stefano Caioni
         </Link>
       </Typography>

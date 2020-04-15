@@ -28,6 +28,8 @@ export default withStyles(styles, { withTheme: true })(class extends Component {
         <Typography className={classes.copyMain}>
           You can check my <Link className={classes.textLink} color='primary' href='/cv'>CV here</Link>
           <br />
+          Find the code for this website at <Link className={classes.textLink} target='_blank' href='https://github.com/stefanocaioni/cv'>this repo</Link>.
+          <br />
           Or you can take a look at what I'm doing right <Link className={classes.textLink} color='primary' href='/now'>NOW</Link>
         </Typography>
       </>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -8,10 +8,9 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Cv from './pages/Cv';
 import Now from './pages/Now';
+
 import indigo from '@material-ui/core/colors/indigo';
 import blueGrey from '@material-ui/core/colors/blueGrey';
-
-import { Switch, FormControlLabel } from '@material-ui/core';
 
 import 'typeface-exo-2';
 
@@ -193,28 +192,38 @@ const darkTheme = {
 
 const useDarkMode = () => {
   const [theme, setTheme] = useState(defaultTheme);
-  
   const { palette: { type } } = theme;
   
-  const handleSwithTheme = () => {
-    const updatedTheme = type === 'light' ? darkTheme : defaultTheme;
-    setTheme(updatedTheme);
+  const handleSwitchTheme = () => {
+    if (type === 'light') {
+      window.localStorage.setItem('theme', 'dark');
+      setTheme(darkTheme);
+    } else {
+      window.localStorage.setItem('theme', 'light');
+      setTheme(defaultTheme)
+    }
   }
-  return [theme, handleSwithTheme];
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme');
+    const renderedTheme = localTheme === 'light' ? defaultTheme : darkTheme;
+    renderedTheme && setTheme(renderedTheme);
+  }, []);
+
+  return [theme, handleSwitchTheme];
 }
 
 const App = () => {
-  const [theme, handleSwithTheme] = useDarkMode();
+  const [theme, handleSwitchTheme] = useDarkMode();
   const themeConfig = createMuiTheme(theme);
-
+  
   return (
     <>
       <ThemeProvider theme={themeConfig}>
         <CssBaseline />
         <BrowserRouter>
           <Container maxWidth='sm'>
-            <Nav onSwitchTheme={handleSwithTheme} />
-            {/* <FormControlLabel control={<Switch onClick={handleSwithTheme} />} /> */}
+            <Nav onSwitchTheme={handleSwitchTheme} />
             <>
               <Route exact path='/' component={Home} />
               <Route path='/cv' component={Cv} />
