@@ -9,10 +9,10 @@ import Home from './pages/Home';
 import Cv from './pages/Cv';
 import Now from './pages/Now';
 
-import indigo from '@material-ui/core/colors/indigo';
+// import blue from '@material-ui/core/colors/blue';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 
-import 'typeface-exo-2';
+import blue from '@material-ui/core/colors/blue';
 
 const defaultTheme = {
   palette: {
@@ -20,9 +20,9 @@ const defaultTheme = {
       default: 'rgb(248, 249, 252)'
     },
     primary: {
-      light: indigo[50],
-      main: indigo[800],
-      dark: indigo[900]
+      light: blue.A200,
+      main: blue.A400,
+      dark: blue.A700
     },
     type: 'light'
   },
@@ -38,7 +38,7 @@ const defaultTheme = {
       '"Segoe UI Symbol"',
     ].join(','),
     body1: {
-      fontSize: 20,
+      fontSize: 22,
       lineHeight: 1.8,
       color: 'rgb(5, 17, 46)'
     },
@@ -51,7 +51,7 @@ const defaultTheme = {
     h2: {
       fontSize: 40,
       fontWeight: 'bold',
-      marginBottom: 40
+      marginBottom: 30
     },
     subtitle1: {
       fontSize: 22,
@@ -60,6 +60,41 @@ const defaultTheme = {
     },
     subtitle2: {
       fontSize: 20,
+    },
+    a: {
+      position: 'relative',
+      display: 'inline-block',
+      padding: '2px 0',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        width: '100%',
+        height: '2px',
+        bottom: '0',
+        left: '0',
+        backgroundColor: blue[700],
+        opacity: '0.2'
+      },
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        width: '100%',
+        height: '2px',
+        bottom: '0',
+        left: '0',
+        backgroundColor: blue[700],
+        transform: 'scaleX(0)',
+        transformOrigin: 'bottom right',
+        transition: 'transform 0.3s'
+      },
+      '&:hover': {
+        opacity: 0.8,
+        textDecoration: 'none',
+        '&::after': {
+          transformOrigin: 'bottom left',
+          transform: 'scaleX(1)'
+        }
+      }
     }
   },
   copyMain: {
@@ -68,7 +103,6 @@ const defaultTheme = {
   textLink: {
     position: 'relative',
     display: 'inline-block',
-    padding: '2px 0',
     '&::before': {
       content: '""',
       position: 'absolute',
@@ -76,7 +110,7 @@ const defaultTheme = {
       height: '2px',
       bottom: '0',
       left: '0',
-      backgroundColor: indigo[700],
+      backgroundColor: blue[700],
       opacity: '0.2'
     },
     '&::after': {
@@ -86,7 +120,7 @@ const defaultTheme = {
       height: '2px',
       bottom: '0',
       left: '0',
-      backgroundColor: indigo[700],
+      backgroundColor: blue[700],
       transform: 'scaleX(0)',
       transformOrigin: 'bottom right',
       transition: 'transform 0.3s'
@@ -108,9 +142,9 @@ const darkTheme = {
       default: blueGrey[900]
     },
     primary: {
-      light: indigo[50],
-      main: indigo[200],
-      dark: indigo[900]
+      light: blue[50],
+      main: blue[200],
+      dark: blue[900]
     },
     type: 'dark'
   },
@@ -126,7 +160,7 @@ const darkTheme = {
       '"Segoe UI Symbol"',
     ].join(','),
     body1: {
-      fontSize: 20,
+      fontSize: 22,
       lineHeight: 1.8,
       color: blueGrey[50]
     },
@@ -139,7 +173,7 @@ const darkTheme = {
     h2: {
       fontSize: 40,
       fontWeight: 'bold',
-      marginBottom: 40
+      marginBottom: 30
     },
     subtitle1: {
       fontSize: 22,
@@ -164,7 +198,7 @@ const darkTheme = {
       height: '2px',
       bottom: '0',
       left: '0',
-      backgroundColor: indigo[200],
+      backgroundColor: blue[200],
       opacity: '0.2'
     },
     '&::after': {
@@ -174,7 +208,7 @@ const darkTheme = {
       height: '2px',
       bottom: '0',
       left: '0',
-      backgroundColor: indigo[200],
+      backgroundColor: blue[200],
       transform: 'scaleX(0)',
       transformOrigin: 'bottom right',
       transition: 'transform 0.3s'

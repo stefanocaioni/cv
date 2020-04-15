@@ -48,19 +48,18 @@ const Nav = ({ onSwitchTheme }) => {
               size='small'
               onClick={() => onSwitchTheme()} />}
             label={<Typography className={classes.label}>
-              Switch theme
+              toggle dark mode
             </Typography>} />
           <Button color='primary' href='/cv'>CV</Button>
           <Button color='primary' href='/now'>Now</Button>
         </Toolbar>
       </AppBar>
       <Typography
-        className={classes.textLink}
         variant='h1'
         component='h1'>
         <Link href='/'
           underline='none'>
-          Stefano Caioni
+          <strong>Stefano</strong> Caioni
         </Link>
       </Typography>
     </>
