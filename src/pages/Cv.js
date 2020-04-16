@@ -13,6 +13,7 @@ import { jobs } from '../jobs';
 import { stack } from '../stack';
 
 import { withStyles } from '@material-ui/core/styles';
+import Sidebar from '../components/Sidebar';
 
 const styles = theme => ({
   subtitle1: {
@@ -38,43 +39,40 @@ const styles = theme => ({
   },
   iconStyle: {
     width: 5
-  },
-  listMenu: {
-    position: 'fixed',
-    top: 120,
-    right: 20,
-    listStyle: 'none',
-    paddingLeft: 0,
-    textAlign: 'right',
-  },
-  listMenuItem: {
-    marginBottom: 10
   }
 });
+
+const links = [
+  {
+    id: '#tech',
+    text: 'Technologies'
+  },
+  {
+    id: '#history',
+    text: 'Work history'
+  },
+  {
+    id: '#cnd',
+    text: 'Car Next Door'
+  },
+  {
+    id: '#fln',
+    text: 'Freelancer.com'
+  },
+  {
+    id: '#paesanella',
+    text: 'Paesanella'
+  },
+  {
+    id: '#contract',
+    text: 'Contractor'
+  },
+]
 
 export default withStyles(styles)(({classes}) => {
   return (
     <>
-      <ul className={classes.listMenu}>
-        <li className={classes.listMenuItem}>
-          <Link href='#tech'>Technologies</Link>
-        </li>
-        <li className={classes.listMenuItem}>
-          <Link href='#history'>Work history</Link>
-        </li>
-        <li className={classes.listMenuItem}>
-          <Link href='#cnd'>Car Next Door</Link>
-        </li>
-        <li className={classes.listMenuItem}>
-          <Link href='#fln'>Freelancer.com</Link>
-        </li>
-        <li className={classes.listMenuItem}>
-          <Link href='#paesanella'>Paesanella</Link>
-        </li>
-        <li className={classes.listMenuItem}>
-          <Link href='#contract'>Contractor</Link>
-        </li>
-      </ul>
+      <Sidebar links={links} />
 
       <Typography
         className={classes.subHeading}

@@ -10,6 +10,7 @@ import LaptopIcon from '@material-ui/icons/Laptop';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import HeadsetIcon from '@material-ui/icons/Headset';
+import Sidebar from '../components/Sidebar';
 
 const API =
   'https://www.googleapis.com/books/v1/users/108832331148662612349/bookshelves/3/volumes';
@@ -41,6 +42,33 @@ const styles = theme => ({
     backgroundSize: 'contain'
   },
 });
+
+const links = [
+  {
+    id: '#creating',
+    text: 'Creating'
+  },
+  {
+    id: '#books',
+    text: 'Books'
+  },
+  {
+    id: '#podcasts',
+    text: 'Podcasts'
+  },
+  {
+    id: '#music',
+    text: 'Music'
+  },
+  {
+    id: '#bodymind',
+    text: 'Body & Mind'
+  },
+  {
+    id: '#thoughts',
+    text: 'Thoughts'
+  },
+]
 
 export default withStyles(styles)(class extends Component {
   state = {
@@ -76,6 +104,7 @@ export default withStyles(styles)(class extends Component {
 
     return (
       <>
+        <Sidebar links={links} />
         <Typography
           variant='h2'
           component='h2'>
@@ -90,6 +119,7 @@ export default withStyles(styles)(class extends Component {
 
         <div className={classes.section}>
           <Typography
+            id='creating'
             variant='subtitle1'
             component='h3'>
             <LaptopIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
@@ -104,6 +134,7 @@ export default withStyles(styles)(class extends Component {
 
         <div className={classes.section}>
           <Typography
+            id='books'
             variant='subtitle1'
             component='h3'>
             <MenuBookIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
@@ -146,6 +177,7 @@ export default withStyles(styles)(class extends Component {
         
         <div className={classes.section}>
           <Typography
+            id='podcasts'
             variant='subtitle1'
             component='h3'>
             <HeadsetIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
@@ -176,6 +208,7 @@ export default withStyles(styles)(class extends Component {
 
         <div className={classes.section}>
           <Typography
+          id='music'
           variant='subtitle1'
           component='h3'>
           <MusicNoteIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
@@ -201,6 +234,7 @@ export default withStyles(styles)(class extends Component {
 
         <div className={classes.section}>
           <Typography
+            id='bodymind'
             variant='subtitle1'
             component='h3'>
             <DirectionsRunIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
@@ -213,6 +247,7 @@ export default withStyles(styles)(class extends Component {
 
         <div className={classes.section}>
           <Typography
+            id='thoughts'
             variant='subtitle1'
             component='h3'>
             <ContactSupportIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
