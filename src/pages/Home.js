@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
@@ -46,34 +46,30 @@ const styles = theme => ({
   },
 });
 
-export default withStyles(styles, { withTheme: true })(class extends Component {
-  render() {
-   const { classes } = this.props;
-  
-    return (
-      <>
-        <div className={classes.helloContainer}>
-          <Typography className={classes.section}>Hello,</Typography>
-        </div>
-        
-        <Typography className={classes.section}>
- 
-          I am an experienced and creative Frontend Developer.
-          During my years of experience, I sharpened my <strong>HTML5/CSS3/SCSS/Sass</strong> skills and gained deep knowledge of 
-          <strong>JavaScript</strong> as well as the most popular <strong>modern Frontend frameworks</strong>.
-          <br /><br />
-          I have great passion for <strong>UX</strong> and I am convinced that user experience combined with data-driven decisions and a great <strong>UI</strong> are key 
-          ingredients for a successful product.
-        </Typography>
+export default withStyles(styles)(({classes}) => {
+  return (
+    <>
+      <div className={classes.helloContainer}>
+        <Typography className={classes.section}>Hello,</Typography>
+      </div>
+      
+      <Typography className={classes.section}>
 
-        <Typography className={classes.section}>
-          Check my <Link className={classes.textLink} color='primary' href='/cv'>CV here</Link>
-          <br />
-          You can find the code for this website <Link className={classes.textLink} target='_blank' href='https://github.com/stefanocaioni/cv'>here</Link>.
-          <br />
-          Or you can take a look at what I'm doing right <Link className={classes.textLink} color='primary' href='/now'>NOW</Link>
-        </Typography>
-      </>
-    )
-  }
+        I am an experienced and creative Frontend Developer.
+        During my years of experience, I sharpened my <strong>HTML5/CSS3/SCSS/Sass</strong> skills and gained deep knowledge of 
+        <strong>JavaScript</strong> as well as the most popular <strong>modern Frontend frameworks</strong>.
+        <br /><br />
+        I have great passion for <strong>UX</strong> and I am convinced that user experience combined with data-driven decisions and a great <strong>UI</strong> are key 
+        ingredients for a successful product.
+      </Typography>
+
+      <Typography className={classes.section}>
+        Check my <Link className={classes.textLink} color='primary' href='/cv'>CV here</Link>
+        <br />
+        You can find the code for this website <Link className={classes.textLink} target='_blank' href='https://github.com/stefanocaioni/cv'>here</Link>.
+        <br />
+        Or you can take a look at what I'm doing right <Link className={classes.textLink} color='primary' href='/now'>NOW</Link>
+      </Typography>
+    </>
+  )
 })
