@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
@@ -70,208 +70,195 @@ const links = [
   },
 ]
 
-export default withStyles(styles)(class extends Component {
-  state = {
-    isLoading: false,
-    books: [],
-    songs: []
-  };
+export default withStyles(styles)(({classes}) => {
+  const [loading, setLoading] = useState(true);
+  const [books, setBooks] = useState([]);
+  const [songs, setSongs] = useState([]);
 
-  componentDidMount() {
-    this.setState({ isLoading: true });
-
+  useEffect(() => {
     fetch(API)
-      .then(res => {
-        return res.json();
-      })
+      .then(res => res.json())
       .then(data => {
-        this.setState({ books: data.items, isLoading: false });
-        console.log('books: ', data);
+        setBooks(data.items);
+        setLoading(false);
       });
 
-      fetch('http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=stefanocaioni&api_key=bfa199dd17ba3f4adbcde4152357f41e&format=json')
-        .then(res => {
-          return res.json();
-        })
-        .then(data => {
-          this.setState({ songs: data.lovedtracks.track });
-        });
-  }
-  
-  render() {
-    const { isLoading, books, songs } = this.state;
-    const { classes } = this.props;
+    fetch('http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=stefanocaioni&api_key=bfa199dd17ba3f4adbcde4152357f41e&format=json')
+      .then(res => res.json())
+      .then(data => {
+        setSongs(data.lovedtracks.track)
+      });
+  })
 
-    return (
-      <>
-        <Sidebar links={links} />
+  return (
+    <>
+      <Sidebar links={links} />
+      <Typography
+        variant='h2'
+        component='h2'>
+        What I'm doing now
         <Typography
-          variant='h2'
-          component='h2'>
-          What I'm doing now
-          <Typography
-            variant='overline'
-            color='textSecondary'
-            display='block'>
-            Updated - 16 April 2020
-          </Typography>
+          variant='overline'
+          color='textSecondary'
+          display='block'>
+          Updated - 16 April 2020
         </Typography>
+      </Typography>
 
-        <div className={classes.section}>
-          <Typography
-            id='creating'
-            variant='subtitle1'
-            component='h3'>
-            <LaptopIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
-            Creating
-          </Typography>
-          <Typography>
-            As well as improving this website I'm also working on a Wordpress theme to use for my blogs.
-            I'm coding it using React + Graphql, using Wordpress as a headless CMS.
-            Doing server-side rendering for the theme will greatily improve SEO and accessibilty.
-          </Typography>
-        </div>
-
-        <div className={classes.section}>
-          <Typography
-            id='books'
-            variant='subtitle1'
-            component='h3'>
-            <MenuBookIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
-            Books (reading or listening)
-
-          </Typography>
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            books.map((book, i) => {
-              return (
-                <div
-                  className={classes.card}
-                  key={i}>
-                  <CardMedia
-                    className={classes.cardCover}
-                    image={book.volumeInfo.imageLinks.smallThumbnail}
-                    title={book.volumeInfo.title}
-                  />
-                  <div className={classes.cardDetails}>
-                    <CardContent className={classes.cardContent}>
-                      <Typography component='p' variant='subtitle2'>
-                        <Link className={classes.textLink} href={book.volumeInfo.infoLink} target='_blank'>{book.volumeInfo.title}</Link>
-                      </Typography>
-                      <Typography variant='body2' color='textSecondary'>
-                        {book.volumeInfo.subtitle}
-                      </Typography>
-                      <Typography variant='overline' color='textSecondary'>
-                        {book.volumeInfo.authors.map(
-                          (author, i) => <span key={i}>{author}</span>
-                        )}
-                      </Typography>
-                    </CardContent>
-                  </div>
-                </div>
-              );
-            })
-          )}
-        </div>
-        
-        <div className={classes.section}>
-          <Typography
-            id='podcasts'
-            variant='subtitle1'
-            component='h3'>
-            <HeadsetIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
-            Podcasts
-          </Typography>
-          <Typography component='p' variant='subtitle2'>
-            <Link
-              className={classes.textLink}
-              href='https://www.listennotes.com/podcasts/the-joe-rogan-experience-joe-rogan-s_ML5QqPi0v/' target='_blank'>
-                The Joe Rogan Experience
-              </Link>
-          </Typography>
-          <Typography display='block' variant='overline' color='textSecondary'>
-            Joe Rogan
-          </Typography>
-          <Typography component='p' variant='subtitle2'>
-            <Link
-              className={classes.textLink}
-              href='https://www.listennotes.com/podcasts/the-rich-roll-podcast-rich-roll-T1Kd_QXu3Ha/'
-              target='_blank'>
-                The Rich Roll Podcast
-              </Link>
-          </Typography>
-          <Typography display='block' variant='overline' color='textSecondary'>
-            Rich Roll
-          </Typography>
-        </div>
-
-        <div className={classes.section}>
-          <Typography
-          id='music'
+      <div className={classes.section}>
+        <Typography
+          id='creating'
           variant='subtitle1'
           component='h3'>
-          <MusicNoteIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
-          Music I'm liking
+          <LaptopIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
+          Creating
         </Typography>
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            songs.map((song, i) => {
-              return (
-                <div key={i}>
+        <Typography>
+          As well as improving this website I'm also working on a Wordpress theme to use for my blogs.
+          I'm coding it using React + Graphql, using Wordpress as a headless CMS.
+          Doing server-side rendering for the theme will greatily improve SEO and accessibilty.
+        </Typography>
+      </div>
+
+      <div className={classes.section}>
+        <Typography
+          id='books'
+          variant='subtitle1'
+          component='h3'>
+          <MenuBookIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
+          Books (reading or listening)
+
+        </Typography>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          books.map((book, i) => {
+            return (
+              <div
+                className={classes.card}
+                key={i}>
+                <CardMedia
+                  className={classes.cardCover}
+                  image={book.volumeInfo.imageLinks.smallThumbnail}
+                  title={book.volumeInfo.title}
+                />
+                <div className={classes.cardDetails}>
+                  <CardContent className={classes.cardContent}>
                     <Typography component='p' variant='subtitle2'>
-                      <Link className={classes.textLink} href={song.url} target='_blank'>{song.name}</Link>
+                      <Link className={classes.textLink} href={book.volumeInfo.infoLink} target='_blank'>{book.volumeInfo.title}</Link>
                     </Typography>
-                    <Typography display='block' variant='overline' color='textSecondary'>
-                      {song.artist.name}
+                    <Typography variant='body2' color='textSecondary'>
+                      {book.volumeInfo.subtitle}
                     </Typography>
+                    <Typography variant='overline' color='textSecondary'>
+                      {book.volumeInfo.authors.map(
+                        (author, i) => <span key={i}>{author}</span>
+                      )}
+                    </Typography>
+                  </CardContent>
                 </div>
-              );
-            })
-          )}
-        </div>
-
-        <div className={classes.section}>
-          <Typography
-            id='bodymind'
-            variant='subtitle1'
-            component='h3'>
-            <DirectionsRunIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
-            Body and Mind
-          </Typography>
-          <Typography>
-            I run 32 km (20 miles) on average per week and meditate for 1 hour every day.
-          </Typography>
-        </div>
-
-        <div className={classes.section}>
-          <Typography
-            id='thoughts'
-            variant='subtitle1'
-            component='h3'>
-            <ContactSupportIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
-            Thoughts
-          </Typography>
-          <Typography>
-            I'm thankful because I can work from home and enjoy a great level of freedom. 
-            I work on the stuff I love and I have the time to work on different projects I care about and spend 
-            time with my fiancée as well as doing sports and reading books.
-          </Typography>
-        </div>
-
-        <div className={classes.section}>
-          <Typography variant='overline' color='textSecondary' style={{marginRight: 10}}>
-            /now page inspired by
-          </Typography>
+              </div>
+            );
+          })
+        )}
+      </div>
+      
+      <div className={classes.section}>
+        <Typography
+          id='podcasts'
+          variant='subtitle1'
+          component='h3'>
+          <HeadsetIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
+          Podcasts
+        </Typography>
+        <Typography component='p' variant='subtitle2'>
           <Link
             className={classes.textLink}
-            href='https://sivers.org/nowff'
+            href='https://www.listennotes.com/podcasts/the-joe-rogan-experience-joe-rogan-s_ML5QqPi0v/' target='_blank'>
+              The Joe Rogan Experience
+            </Link>
+        </Typography>
+        <Typography display='block' variant='overline' color='textSecondary'>
+          Joe Rogan
+        </Typography>
+        <Typography component='p' variant='subtitle2'>
+          <Link
+            className={classes.textLink}
+            href='https://www.listennotes.com/podcasts/the-rich-roll-podcast-rich-roll-T1Kd_QXu3Ha/'
             target='_blank'>
-            Derek Sivers
-          </Link>
-        </div>
-      </>
+              The Rich Roll Podcast
+            </Link>
+        </Typography>
+        <Typography display='block' variant='overline' color='textSecondary'>
+          Rich Roll
+        </Typography>
+      </div>
+
+      <div className={classes.section}>
+        <Typography
+        id='music'
+        variant='subtitle1'
+        component='h3'>
+        <MusicNoteIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
+        Music I'm liking
+      </Typography>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          songs.map((song, i) => {
+            return (
+              <div key={i}>
+                  <Typography component='p' variant='subtitle2'>
+                    <Link className={classes.textLink} href={song.url} target='_blank'>{song.name}</Link>
+                  </Typography>
+                  <Typography display='block' variant='overline' color='textSecondary'>
+                    {song.artist.name}
+                  </Typography>
+              </div>
+            );
+          })
+        )}
+      </div>
+
+      <div className={classes.section}>
+        <Typography
+          id='bodymind'
+          variant='subtitle1'
+          component='h3'>
+          <DirectionsRunIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
+          Body and Mind
+        </Typography>
+        <Typography>
+          I run 32 km (20 miles) on average per week and meditate for 1 hour every day.
+        </Typography>
+      </div>
+
+      <div className={classes.section}>
+        <Typography
+          id='thoughts'
+          variant='subtitle1'
+          component='h3'>
+          <ContactSupportIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
+          Thoughts
+        </Typography>
+        <Typography>
+          I'm thankful because I can work from home and enjoy a great level of freedom. 
+          I work on the stuff I love and I have the time to work on different projects I care about and spend 
+          time with my fiancée as well as doing sports and reading books.
+        </Typography>
+      </div>
+
+      <div className={classes.section}>
+        <Typography variant='overline' color='textSecondary' style={{marginRight: 10}}>
+          /now page inspired by
+        </Typography>
+        <Link
+          className={classes.textLink}
+          href='https://sivers.org/nowff'
+          target='_blank'>
+          Derek Sivers
+        </Link>
+      </div>
+    </>
     );
-  }
 });
