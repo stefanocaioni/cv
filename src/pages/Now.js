@@ -76,19 +76,30 @@ export default withStyles(styles)(({classes}) => {
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
-    fetch(API)
+    const fetchBooks = () => {
+      fetch(API)
       .then(res => res.json())
       .then(data => {
         setBooks(data.items);
         setLoading(false);
       });
+    }
 
-    fetch('http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=stefanocaioni&api_key=bfa199dd17ba3f4adbcde4152357f41e&format=json')
+    fetchBooks();
+  }, []);
+
+  useEffect(() => {
+    const fetchSongs = () => {
+      fetch('http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=stefanocaioni&api_key=bfa199dd17ba3f4adbcde4152357f41e&format=json')
       .then(res => res.json())
       .then(data => {
-        setSongs(data.lovedtracks.track)
+        setSongs(data.lovedtracks.track);
+        setLoading(false);
       });
-  })
+    }
+
+    fetchSongs();
+  }, []);
 
   return (
     <>
@@ -262,3 +273,4 @@ export default withStyles(styles)(({classes}) => {
     </>
     );
 });
+
