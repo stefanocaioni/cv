@@ -8,15 +8,18 @@ import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import LaptopIcon from '@material-ui/icons/Laptop';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
+import HeadsetIcon from '@material-ui/icons/Headset';
 
 const API =
   'https://www.googleapis.com/books/v1/users/108832331148662612349/bookshelves/3/volumes';
 
 const styles = theme => ({
-  copyMain: theme.copyMain,
+  section: theme.section,
   subHeadingIcon: {
     marginRight: 10
   },
+  textLink: theme.textLink,
   card: {
     display: 'flex',
     alignItems: 'center',
@@ -64,7 +67,6 @@ export default withStyles(styles)(class extends Component {
         })
         .then(data => {
           this.setState({ songs: data.lovedtracks.track });
-          console.log('data: ', data.lovedtracks.track);
         });
   }
   
@@ -86,114 +88,154 @@ export default withStyles(styles)(class extends Component {
           </Typography>
         </Typography>
 
-        <Typography
-          variant='subtitle1'
-          component='h3'>
-          <LaptopIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
-          Creating
-        </Typography>
-        <Typography className={classes.copyMain}>
-          As well as improving this website I'm also working on a Wordpress theme to use for my blogs.
-          I'm coding it using React + Graphql, using Wordpress as a headless CMS.
-          Doing server-side rendering for the theme will greatily improve SEO and accessibilty.
-        </Typography>
+        <div className={classes.section}>
+          <Typography
+            variant='subtitle1'
+            component='h3'>
+            <LaptopIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
+            Creating
+          </Typography>
+          <Typography>
+            As well as improving this website I'm also working on a Wordpress theme to use for my blogs.
+            I'm coding it using React + Graphql, using Wordpress as a headless CMS.
+            Doing server-side rendering for the theme will greatily improve SEO and accessibilty.
+          </Typography>
+        </div>
 
-        <Typography
-          variant='subtitle1'
-          component='h3'>
-          <MenuBookIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
-          Books I'm reading
-        </Typography>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          books.map((book, i) => {
-            return (
-              <div
-                className={classes.card}
-                key={i}>
-                <CardMedia
-                  className={classes.cardCover}
-                  image={book.volumeInfo.imageLinks.smallThumbnail}
-                  title={book.volumeInfo.title}
-                />
-                <div className={classes.cardDetails}>
-                  <CardContent className={classes.cardContent}>
-                    <Typography component='p' variant='subtitle2'>
-                      {book.volumeInfo.title}
-                    </Typography>
-                    <Typography variant='body2' color='textSecondary'>
-                      {book.volumeInfo.subtitle}
-                    </Typography>
-                    <Typography variant='overline' color='textSecondary'>
-                      {book.volumeInfo.authors.map((author, i) => {
-                        return (
-                          <span key={i}>{author}</span>
-                        )
-                      })}
-                    </Typography>
-                  </CardContent>
+        <div className={classes.section}>
+          <Typography
+            variant='subtitle1'
+            component='h3'>
+            <MenuBookIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
+            Books (reading or listening)
+
+          </Typography>
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            books.map((book, i) => {
+              return (
+                <div
+                  className={classes.card}
+                  key={i}>
+                  <CardMedia
+                    className={classes.cardCover}
+                    image={book.volumeInfo.imageLinks.smallThumbnail}
+                    title={book.volumeInfo.title}
+                  />
+                  <div className={classes.cardDetails}>
+                    <CardContent className={classes.cardContent}>
+                      <Typography component='p' variant='subtitle2'>
+                        <Link className={classes.textLink} href={book.volumeInfo.infoLink} target='_blank'>{book.volumeInfo.title}</Link>
+                      </Typography>
+                      <Typography variant='body2' color='textSecondary'>
+                        {book.volumeInfo.subtitle}
+                      </Typography>
+                      <Typography variant='overline' color='textSecondary'>
+                        {book.volumeInfo.authors.map(
+                          (author, i) => <span key={i}>{author}</span>
+                        )}
+                      </Typography>
+                    </CardContent>
+                  </div>
                 </div>
-              </div>
-            );
-          })
-        )}
+              );
+            })
+          )}
+        </div>
+        
+        <div className={classes.section}>
+          <Typography
+            variant='subtitle1'
+            component='h3'>
+            <HeadsetIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
+            Podcasts
+          </Typography>
+          <Typography component='p' variant='subtitle2'>
+            <Link
+              className={classes.textLink}
+              href='https://www.listennotes.com/podcasts/the-joe-rogan-experience-joe-rogan-s_ML5QqPi0v/' target='_blank'>
+                The Joe Rogan Experience
+              </Link>
+          </Typography>
+          <Typography display='block' variant='overline' color='textSecondary'>
+            Joe Rogan
+          </Typography>
+          <Typography component='p' variant='subtitle2'>
+            <Link
+              className={classes.textLink}
+              href='https://www.listennotes.com/podcasts/the-rich-roll-podcast-rich-roll-T1Kd_QXu3Ha/'
+              target='_blank'>
+                The Rich Roll Podcast
+              </Link>
+          </Typography>
+          <Typography display='block' variant='overline' color='textSecondary'>
+            Rich Roll
+          </Typography>
+        </div>
 
-        <Typography
+        <div className={classes.section}>
+          <Typography
           variant='subtitle1'
           component='h3'>
           <MusicNoteIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
-          Music I'm listenting to
+          Music I'm liking
         </Typography>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          songs.map((song, i) => {
-            return (
-              <div
-                className={classes.card}
-                key={i}>
-                <CardMedia
-                  className={classes.cardCover}
-                  image={song.image[0]['#text']}
-                  title={song.name}
-                />
-                <div className={classes.cardDetails}>
-                  <CardContent className={classes.cardContent}>
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            songs.map((song, i) => {
+              return (
+                <div key={i}>
                     <Typography component='p' variant='subtitle2'>
-                      {song.name}
+                      <Link className={classes.textLink} href={song.url} target='_blank'>{song.name}</Link>
                     </Typography>
-                    <Typography variant='overline' color='textSecondary'>
+                    <Typography display='block' variant='overline' color='textSecondary'>
                       {song.artist.name}
                     </Typography>
-                  </CardContent>
                 </div>
-              </div>
-            );
-          })
-        )}
+              );
+            })
+          )}
+        </div>
 
-        <Typography
-          variant='subtitle1'
-          component='h3'>
-          <ContactSupportIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
-          Thoughts
-        </Typography>
-        <Typography className={classes.copyMain}>
-          I'm thankful because I can work from home and enjoy a great level of freedom. 
-          I work on the stuff I love and I have the time to work on different projects I care about and spend 
-          time with my fiancée as well as doing sports and reading books.
-        </Typography>
+        <div className={classes.section}>
+          <Typography
+            variant='subtitle1'
+            component='h3'>
+            <DirectionsRunIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
+            Body and Mind
+          </Typography>
+          <Typography>
+            I run 32 km (20 miles) on average per week and meditate for 1 hour every day.
+          </Typography>
+        </div>
 
-        <Typography variant='overline' color='textSecondary' style={{marginRight: 10}}>
-          /now page inspired by
-        </Typography>
-        <Link
-          className={classes.textLink}
-          href='https://sivers.org/nowff'
-          target='_blank'>
-          Derek Sivers
-        </Link>
+        <div className={classes.section}>
+          <Typography
+            variant='subtitle1'
+            component='h3'>
+            <ContactSupportIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
+            Thoughts
+          </Typography>
+          <Typography>
+            I'm thankful because I can work from home and enjoy a great level of freedom. 
+            I work on the stuff I love and I have the time to work on different projects I care about and spend 
+            time with my fiancée as well as doing sports and reading books.
+          </Typography>
+        </div>
+
+        <div className={classes.section}>
+          <Typography variant='overline' color='textSecondary' style={{marginRight: 10}}>
+            /now page inspired by
+          </Typography>
+          <Link
+            className={classes.textLink}
+            href='https://sivers.org/nowff'
+            target='_blank'>
+            Derek Sivers
+          </Link>
+        </div>
       </>
     );
   }

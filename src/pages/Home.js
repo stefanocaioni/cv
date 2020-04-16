@@ -4,7 +4,7 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
-  copyMain: theme.copyMain,
+  section: theme.section,
   textLink: theme.textLink,
   helloContainer: {
     position: 'relative',
@@ -53,10 +53,10 @@ export default withStyles(styles, { withTheme: true })(class extends Component {
     return (
       <>
         <div className={classes.helloContainer}>
-          <Typography className={classes.copyMain}>Hello,</Typography>
+          <Typography className={classes.section}>Hello,</Typography>
         </div>
         
-        <Typography className={classes.copyMain}>
+        <Typography className={classes.section}>
  
           I am an experienced and creative Frontend Developer.
           During my years of experience, I sharpened my <strong>HTML5/CSS3/SCSS/Sass</strong> skills and gained deep knowledge of 
@@ -66,7 +66,7 @@ export default withStyles(styles, { withTheme: true })(class extends Component {
           ingredients for a successful product.
         </Typography>
 
-        <Typography className={classes.copyMain}>
+        <Typography className={classes.section}>
           Check my <Link className={classes.textLink} color='primary' href='/cv'>CV here</Link>
           <br />
           You can find the code for this website <Link className={classes.textLink} target='_blank' href='https://github.com/stefanocaioni/cv'>here</Link>.

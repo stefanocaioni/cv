@@ -99,7 +99,7 @@ const defaultTheme = {
       }
     }
   },
-  copyMain: {
+  section: {
     marginBottom: 60
   },
   textLink: {
@@ -223,7 +223,7 @@ const darkTheme = {
       }
     },
   },
-  copyMain: {
+  section: {
     marginBottom: 60
   },
   textLink: {
