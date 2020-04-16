@@ -5,13 +5,12 @@ import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import EmailIcon from '@material-ui/icons/Email';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   copyMain: {
     marginBottom: 60
   },
@@ -22,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     marginTop: 60,
     marginBottom: 60
-  }
+  },
+  textLink: theme.textLink
 }));
 
 const Footer = () => {

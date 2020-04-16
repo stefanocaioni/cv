@@ -58,10 +58,13 @@ export const jobs = [
     ]
   },
   {
-    role: 'Freelance Web Designer and Front End Developer',
+    role: 'Freelance Front End Developer',
     id: 'contract',
-    date: 'May 2011 - May 2014',
-    descriptionMain: `During this period I worked for myself as a freelancer. I also founded a Web Startup leading a team of 3 people.
-      I have shown a capacity to inspire and work with others towards a collective goal.`
-  }
+    date: 'Since May 2011',
+    descriptionMain: `I've been working on side projects for myself and on and off for some businesses.`,
+    links: [
+      'https://www.covergenius.com/',
+      'https://www.covergenius.com/xcover/'
+    ]
+  },
 ]

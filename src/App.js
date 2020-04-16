@@ -56,7 +56,9 @@ const defaultTheme = {
     subtitle1: {
       fontSize: 22,
       fontWeight: 'bold',
-      marginBottom: 30
+      marginBottom: 30,
+      display: 'flex',
+      alignItems: 'center'
     },
     subtitle2: {
       fontSize: 20,
@@ -178,11 +180,48 @@ const darkTheme = {
     subtitle1: {
       fontSize: 22,
       fontWeight: 'bold',
-      marginBottom: 30
+      marginBottom: 30,
+      display: 'flex',
+      alignItems: 'center'
     },
     subtitle2: {
       fontSize: 20,
-    }
+    },
+    a: {
+      position: 'relative',
+      display: 'inline-block',
+      padding: '2px 0',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        width: '100%',
+        height: '2px',
+        bottom: '0',
+        left: '0',
+        backgroundColor: blue[700],
+        opacity: '0.2'
+      },
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        width: '100%',
+        height: '2px',
+        bottom: '0',
+        left: '0',
+        backgroundColor: blue[700],
+        transform: 'scaleX(0)',
+        transformOrigin: 'bottom right',
+        transition: 'transform 0.3s'
+      },
+      '&:hover': {
+        opacity: 0.8,
+        textDecoration: 'none',
+        '&::after': {
+          transformOrigin: 'bottom left',
+          transform: 'scaleX(1)'
+        }
+      }
+    },
   },
   copyMain: {
     marginBottom: 60

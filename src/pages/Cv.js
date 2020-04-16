@@ -41,7 +41,7 @@ const styles = theme => ({
   },
   listMenu: {
     position: 'fixed',
-    top: 10,
+    top: 120,
     right: 20,
     listStyle: 'none',
     paddingLeft: 0,
@@ -188,7 +188,7 @@ export default withStyles(styles)(({classes}) => {
                 job.links
                   ?
                     <List className={classes.list}>
-                      <Typography>Some of the pages I've worked on:</Typography>
+                      <Typography>Some of the pages I worked on:</Typography>
                       {
                         job.links.map((link, i) => {
                           return (
