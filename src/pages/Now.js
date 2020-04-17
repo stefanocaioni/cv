@@ -12,8 +12,11 @@ import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import HeadsetIcon from '@material-ui/icons/Headset';
 import Sidebar from '../components/Sidebar';
 
-const API =
+const BOOKS_ENDPOINT =
   'https://www.googleapis.com/books/v1/users/108832331148662612349/bookshelves/3/volumes';
+
+const SONGS_ENDPOINT = 
+  'http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=stefanocaioni&api_key=bfa199dd17ba3f4adbcde4152357f41e&format=json';
 
 const styles = theme => ({
   section: theme.section,
@@ -71,35 +74,8 @@ const links = [
 ]
 
 export default withStyles(styles)(({classes}) => {
-  const [loading, setLoading] = useState(true);
-  const [books, setBooks] = useState([]);
-  const [songs, setSongs] = useState([]);
-
-  useEffect(() => {
-    const fetchBooks = () => {
-      fetch(API)
-      .then(res => res.json())
-      .then(data => {
-        setBooks(data.items);
-        setLoading(false);
-      });
-    }
-
-    fetchBooks();
-  }, []);
-
-  useEffect(() => {
-    const fetchSongs = () => {
-      fetch('http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=stefanocaioni&api_key=bfa199dd17ba3f4adbcde4152357f41e&format=json')
-      .then(res => res.json())
-      .then(data => {
-        setSongs(data.lovedtracks.track);
-        setLoading(false);
-      });
-    }
-
-    fetchSongs();
-  }, []);
+  const books = useFetch(BOOKS_ENDPOINT);
+  const songs = useFetch(SONGS_ENDPOINT);
 
   return (
     <>
@@ -138,12 +114,11 @@ export default withStyles(styles)(({classes}) => {
           component='h3'>
           <MenuBookIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
           Books (reading or listening)
-
         </Typography>
-        {loading ? (
+        {!books || books.isLoading ? (
           <p>Loading...</p>
         ) : (
-          books.map((book, i) => {
+          books.data.items.map((book, i) => {
             return (
               <div
                 className={classes.card}
@@ -213,10 +188,10 @@ export default withStyles(styles)(({classes}) => {
         <MusicNoteIcon className={classes.subHeadingIcon} fontSize='default' color='primary' />
         Music I'm liking
       </Typography>
-        {loading ? (
+        {!songs || songs.isLoading ? (
           <p>Loading...</p>
         ) : (
-          songs.map((song, i) => {
+          songs.data.lovedtracks.track.map((song, i) => {
             return (
               <div key={i}>
                   <Typography component='p' variant='subtitle2'>
@@ -271,6 +246,29 @@ export default withStyles(styles)(({classes}) => {
         </Link>
       </div>
     </>
-    );
+  );
 });
+
+const useFetch = (url) => {
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        setData(data);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error);
+      }
+    }
+    fetchData();
+    
+  }, []);
+  
+  return { data, isLoading, error } ;
+}
 
