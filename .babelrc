@@ -16,4 +16,7 @@
     ],
     "@babel/react",
   ],
+  "plugins": [
+    "@babel/syntax-dynamic-import"
+  ]
 }
