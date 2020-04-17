@@ -1,11 +1,14 @@
 import React from 'react';
+import {
+  Link,
+  Typography
+} from '@material-ui/core';
+
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import EmailIcon from '@material-ui/icons/Email';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   footer: {

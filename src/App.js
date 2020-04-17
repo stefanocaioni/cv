@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
 
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -10,6 +8,10 @@ import Home from './pages/Home';
 import Cv from './pages/Cv';
 import Now from './pages/Now';
 
+import {
+  CssBaseline,
+  Container
+} from '@material-ui/core';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 import blue from '@material-ui/core/colors/blue';
 

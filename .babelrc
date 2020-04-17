@@ -3,7 +3,7 @@
     [
       "@babel/env",
       {
-        "useBuiltIns": "entry",
+        "useBuiltIns": "usage",
         "corejs": 3,
         "targets": {
           "browsers": [
@@ -15,8 +15,5 @@
       }
     ],
     "@babel/react",
-  ],
-  "plugins": [
-    "@babel/syntax-dynamic-import"
   ]
 }

@@ -1,19 +1,19 @@
 import React, { Fragment } from 'react';
-import Typography from '@material-ui/core/Typography';
 import Markdown from 'markdown-to-jsx';
-import Link from '@material-ui/core/Link';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import FiberManualRecordOutlinedIcon from '@material-ui/icons/FiberManualRecordOutlined';
-import CodeIcon from '@material-ui/icons/Code';
-
 import { jobs } from '../jobs';
 import { stack } from '../stack';
-
-import { withStyles } from '@material-ui/core/styles';
 import Sidebar from '../components/Sidebar';
+import {
+  Typography,
+  Link,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon
+} from '@material-ui/core';
+import FiberManualRecordOutlinedIcon from '@material-ui/icons/FiberManualRecordOutlined';
+import CodeIcon from '@material-ui/icons/Code';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   subtitle1: {
@@ -34,7 +34,7 @@ const styles = theme => ({
     lineHeight: 1.6,
     opacity: 0.9,
   },
-  listItemIcon: {
+  ListItemIcon: {
     minWidth: 30
   },
   iconStyle: {
@@ -88,7 +88,7 @@ export default withStyles(styles)(({classes}) => {
               <ListItem
                 className={classes.listItem}
                 key={i}>
-                <ListItemIcon className={classes.listItemIcon}>
+                <ListItemIcon className={classes.ListItemIcon}>
                   <CodeIcon fontSize='small' color='primary' />
                 </ListItemIcon>
                 <ListItemText primary={s} />
@@ -172,7 +172,7 @@ export default withStyles(styles)(({classes}) => {
                     <ListItem
                       className={classes.listItem}
                       key={i}>
-                      <ListItemIcon className={classes.listItemIcon}>
+                      <ListItemIcon className={classes.ListItemIcon}>
                         <FiberManualRecordOutlinedIcon fontSize='inherit' color='primary' />
                       </ListItemIcon>
                       <ListItemText
@@ -191,7 +191,7 @@ export default withStyles(styles)(({classes}) => {
                         job.links.map((link, i) => {
                           return (
                             <ListItem className={classes.listItem} key={i}>
-                              <ListItemIcon className={classes.listItemIcon}>
+                              <ListItemIcon className={classes.ListItemIcon}>
                                 <FiberManualRecordOutlinedIcon fontSize='inherit' color='primary' />
                               </ListItemIcon>
                               <Link

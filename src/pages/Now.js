@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Link from '@material-ui/core/Link';
+import Sidebar from '../components/Sidebar';
+import {
+  Typography,
+  CardContent,
+  CardMedia,
+  Link,
+} from '@material-ui/core';
+
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import LaptopIcon from '@material-ui/icons/Laptop';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import HeadsetIcon from '@material-ui/icons/Headset';
-import Sidebar from '../components/Sidebar';
 
 const BOOKS_ENDPOINT =
   'https://www.googleapis.com/books/v1/users/108832331148662612349/bookshelves/3/volumes';

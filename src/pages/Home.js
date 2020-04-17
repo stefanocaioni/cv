@@ -1,7 +1,9 @@
 import React from 'react';
+import {
+  Link,
+  Typography
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   section: theme.section,
