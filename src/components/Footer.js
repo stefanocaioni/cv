@@ -1,7 +1,4 @@
 import React from 'react';
-import SpeedDial from '@material-ui/lab/SpeedDial';
-import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
-import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import EmailIcon from '@material-ui/icons/Email';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
@@ -11,71 +8,50 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  section: {
-    marginBottom: 60
+  footer: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginBottom: 200
   },
-  divider: {
-    marginBottom: 60
+  contactsText: {
+    textTransform: 'uppercase',
+    fontSize: 14,
+    letterSpacing: 2,
+    marginRight: 10,
   },
-  speedDial: {
-    marginLeft: 'auto',
-    marginTop: 60,
-    marginBottom: 60
+  iconLink: {
+    display: 'inline-block',
+    marginRight: 10,
   },
-  textLink: theme.textLink
 }));
 
 const Footer = () => {
   const classes = useStyles();
-  const [direction] = React.useState('right');
-  const [open, setOpen] = React.useState(false);
-  const [hidden] = React.useState(false);
 
-  const handleClose = (url) => {
-    setOpen(false);
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleRedirect = (action) => {
-    action.name === 'Email'
-      ? window.location.href = `mailto:${action.url}`
-      : window.location.href = action.url;
-
-      window.open(
-        action.url,
-        '_blank'
-      )
-  }
-
-  const actions = [
-    { icon: <GitHubIcon />, name: 'GitHub', url: 'https://github.com/stefanocaioni' },
-    { icon: <EmailIcon />, name: 'Email', url: 'ste.caioni@gmail.com' },
-    { icon: <LinkedInIcon />, name: 'LinkedIn', url: 'https://www.linkedin.com/in/stefanocaioni/' },
+  const contacts = [
+    { icon: <GitHubIcon fontSize='small' />, name: 'GitHub', url: 'https://github.com/stefanocaioni' },
+    { icon: <EmailIcon fontSize='small' />, name: 'Email', url: 'mailto:ste.caioni@gmail.com' },
+    { icon: <LinkedInIcon fontSize='small' />, name: 'LinkedIn', url: 'https://www.linkedin.com/in/stefanocaioni/' },
   ];
 
   return (
-    <SpeedDial
-      ariaLabel='SpeedDial example'
-      className={classes.speedDial}
-      hidden={hidden}
-      icon={<SpeedDialIcon />}
-      onClose={handleClose}
-      onOpen={handleOpen}
-      open={open}
-      direction={direction}
-    >
-      {actions.map((action) => (
-        <SpeedDialAction
-          key={action.name}
-          icon={action.icon}
-          tooltipTitle={action.name}
-          onClick={(e) => handleRedirect(action, e)}
-        />
-      ))}
-    </SpeedDial>
+    <div className={classes.footer}>
+      <Typography className={classes.contactsText}>Contacts</Typography>
+      {
+        contacts.map((contact, name) => {
+          return (
+            <Link
+              key={name}
+              className={classes.iconLink}
+              href={contact.url}
+              target='_blank'>
+                {contact.icon}
+            </Link>
+          )
+        })
+      }
+    </div>
   )
 }
 
