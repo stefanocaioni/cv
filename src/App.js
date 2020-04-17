@@ -10,15 +10,10 @@ import Home from './pages/Home';
 import Cv from './pages/Cv';
 import Now from './pages/Now';
 
-// import blue from '@material-ui/core/colors/blue';
 import blueGrey from '@material-ui/core/colors/blueGrey';
-
 import blue from '@material-ui/core/colors/blue';
 
 const defaultTheme = {
-  root: {
-    paddingBottom: '200'
-  },
   palette: {
     background: {
       default: 'rgb(248, 249, 252)'

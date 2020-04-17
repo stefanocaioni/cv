@@ -1,25 +1,24 @@
 {
-  "name": "ste-cv",
-  "version": "0.1.0",
-  "private": true,
+  "name": "my-cv",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --port 3000 --compress --mode development",
+    "dev": "webpack --mode development --progress",
+    "build": "webpack --mode production --progress"
+  },
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
     "@material-ui/core": "^4.9.9",
     "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.48",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "markdown-to-jsx": "^6.11.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "react-router-dom": "^5.1.2"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +36,13 @@
     ]
   },
   "devDependencies": {
-    "typeface-exo-2": "^1.1.4"
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "html-webpack-plugin": "^4.2.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }
