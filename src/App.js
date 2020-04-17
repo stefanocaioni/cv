@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
+
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -295,8 +296,8 @@ const App = () => {
       <ThemeProvider theme={themeConfig}>
         <CssBaseline />
         <BrowserRouter>
+          <Nav onSwitchTheme={handleSwitchTheme} />
           <Container maxWidth='sm'>
-            <Nav onSwitchTheme={handleSwitchTheme} />
             <>
               <Route exact path='/' component={Home} />
               <Route path='/cv' component={Cv} />
