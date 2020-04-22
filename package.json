@@ -24,6 +24,7 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "core-js": "3.6.5",
+    "create-file-webpack": "^1.0.2",
     "nodemon": "^2.0.3",
     "reload": "^3.0.4",
     "webpack": "^4.42.1",

@@ -1,4 +1,5 @@
-const nodeExternals = require('webpack-node-externals')
+const nodeExternals = require('webpack-node-externals');
+const CreateFileWebpack = require('create-file-webpack');
 
 const common = {
   devtool: 'cheap-module-source-map',
@@ -28,6 +29,13 @@ module.exports = [
     ...common,
     target: 'node',
     entry: './src/server',
-    externals: [nodeExternals()]
+    externals: [nodeExternals()],
+    plugins: [
+      new CreateFileWebpack({
+        path: './dist',
+        fileName: '_redirects',
+        content: '/* /index.html 200'
+      })
+    ]
   }
 ]
