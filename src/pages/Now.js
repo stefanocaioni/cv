@@ -15,11 +15,13 @@ import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import HeadsetIcon from '@material-ui/icons/Headset';
 
+import key from '../secret';
+
 const BOOKS_ENDPOINT =
-  'https://www.googleapis.com/books/v1/users/108832331148662612349/bookshelves/3/volumes';
+  `https://www.googleapis.com/books/v1/users/${key.books}/bookshelves/3/volumes`;
 
 const SONGS_ENDPOINT = 
-  'https://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=stefanocaioni&api_key=bfa199dd17ba3f4adbcde4152357f41e&format=json';
+  `https://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=stefanocaioni&api_key=${key.songs}&format=json`;
 
 const styles = theme => ({
   section: theme.section,
