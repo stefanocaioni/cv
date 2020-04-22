@@ -3,14 +3,13 @@ import Markdown from 'markdown-to-jsx';
 import { jobs } from '../jobs';
 import { stack } from '../stack';
 import Sidebar from '../components/Sidebar';
-import {
-  Typography,
-  Link,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon
-} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+
 import FiberManualRecordOutlinedIcon from '@material-ui/icons/FiberManualRecordOutlined';
 import CodeIcon from '@material-ui/icons/Code';
 import { withStyles } from '@material-ui/core/styles';

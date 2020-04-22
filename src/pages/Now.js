@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Sidebar from '../components/Sidebar';
-import {
-  Typography,
-  CardContent,
-  CardMedia,
-  Link,
-} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Link from '@material-ui/core/Link';
 
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import MenuBookIcon from '@material-ui/icons/MenuBook';

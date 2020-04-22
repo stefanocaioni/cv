@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-  Link,
-  Typography
-} from '@material-ui/core';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
 
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';

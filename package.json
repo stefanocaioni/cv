@@ -2,37 +2,21 @@
   "name": "my-cv",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "start": "webpack-dev-server --open --port 3000 --compress --mode development",
-    "dev": "rm -rf dist && webpack --mode development --progress",
-    "build": "rm -rf dist && webpack --mode production --progress"
+    "start": "node dist/main",
+    "watch": "webpack --mode development --watch & nodemon dist/main",
+    "dev": "rm -rf dist public && webpack --mode development --progress",
+    "build": "rm -rf dist public && webpack --mode production --progress"
   },
   "dependencies": {
-    "@material-ui/core": "^4.9.9",
+    "@material-ui/core": "4.9.11",
     "@material-ui/icons": "^4.9.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "express": "^4.17.1",
     "markdown-to-jsx": "^6.11.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -40,9 +24,10 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "core-js": "3.6.5",
-    "html-webpack-plugin": "^4.2.0",
+    "nodemon": "^2.0.3",
+    "reload": "^3.0.4",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-node-externals": "^1.7.2"
   }
 }
