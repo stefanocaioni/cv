@@ -15,7 +15,7 @@ import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import HeadsetIcon from '@material-ui/icons/Headset';
 
-import key from '../secret';
+import { key } from '../secret';
 
 const BOOKS_ENDPOINT =
   `https://www.googleapis.com/books/v1/users/${key.books}/bookshelves/3/volumes`;
@@ -93,7 +93,7 @@ export default withStyles(styles)(({classes}) => {
           variant='overline'
           color='textSecondary'
           display='block'>
-          Updated - 16 April 2020
+          Last Updated April 2020
         </Typography>
       </Typography>
 
@@ -106,8 +106,8 @@ export default withStyles(styles)(({classes}) => {
           Creating
         </Typography>
         <Typography>
-          As well as improving this website I'm also working on a Wordpress theme to use for my blogs.
-          I'm coding it using React + Graphql, using Wordpress as a headless CMS.
+          As well as constantly improving this website I'm also working on a React Wordpress theme to use for my blogs.
+          I'm coding it using <strong>React + Graphql</strong>, using Wordpress as a headless CMS.
           Doing server-side rendering for the theme will greatily improve SEO and accessibilty.
         </Typography>
       </div>
@@ -233,9 +233,7 @@ export default withStyles(styles)(({classes}) => {
           Thoughts
         </Typography>
         <Typography>
-          I'm thankful because I can work from home and enjoy a great level of freedom. 
-          I work on the stuff I love and I have the time to work on different projects I care about and spend 
-          time with my fiancée as well as doing sports and reading books.
+          I feel lucky since I work on the things I love.
         </Typography>
       </div>
 

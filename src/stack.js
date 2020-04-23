@@ -3,5 +3,5 @@ export const stack = [
   'React, Angular, Vue',
   'HTML, CSS, SASS/SMACSS/BEM/TailwindCSS',
   'CSS-in-JS',
-  'RESTful API'
+  'API'
 ]
