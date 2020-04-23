@@ -108,7 +108,7 @@ export default withStyles(styles)(({classes}) => {
         <Typography>
           As well as constantly improving this website I'm also working on a React Wordpress theme to use for my blogs.
           I'm coding it using <strong>React + Graphql</strong>, using Wordpress as a headless CMS.
-          Doing server-side rendering for the theme will greatily improve SEO and accessibilty.
+          Implementing server-side rendering will greatily improve UX and SEO.
         </Typography>
       </div>
 
