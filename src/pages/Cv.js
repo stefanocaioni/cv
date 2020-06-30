@@ -48,6 +48,10 @@ const links = [
     text: 'Technologies'
   },
   {
+    id: '#featured',
+    text: 'Featured'
+  },
+  {
     id: '#history',
     text: 'Work history'
   },
@@ -96,6 +100,43 @@ export default withStyles(styles)(({classes}) => {
             )
           })
         }
+      </List>
+
+      <Typography
+        className={classes.subHeading}
+        id='featured'
+        variant='h2'
+        component='h2'>
+        Work I'm Proud Of
+      </Typography>
+      <List className={classes.list}>
+          <ListItem
+            className={classes.listItem}>
+            <ListItemIcon className={classes.ListItemIcon}>
+              <CodeIcon fontSize='small' color='primary' />
+            </ListItemIcon>
+            <Link href={'https://bits.freelancer.com/info/introduction'} target='_blank' className={classes.textLink}>
+              <strong>Bits, Angular Component Library</strong>
+            </Link>
+          </ListItem>
+          <ListItem
+            className={classes.listItem}>
+            <ListItemIcon className={classes.ListItemIcon}>
+              <CodeIcon fontSize='small' color='primary' />
+            </ListItemIcon>
+            <Link href={'https://www.freelancer.com/'} target='_blank' className={classes.textLink}>
+              <strong>Freelancer.com</strong>
+            </Link>
+          </ListItem>
+          <ListItem
+            className={classes.listItem}>
+            <ListItemIcon className={classes.ListItemIcon}>
+              <CodeIcon fontSize='small' color='primary' />
+            </ListItemIcon>
+            <Link href={'https://www.covergenius.com/'} target='_blank' className={classes.textLink}>
+              <strong>Covergenius (marketing website)</strong>
+            </Link>
+          </ListItem>
       </List>
  
       <Typography

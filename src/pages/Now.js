@@ -91,7 +91,7 @@ export default withStyles(styles)(({classes}) => {
           variant='overline'
           color='textSecondary'
           display='block'>
-          Last Updated April 2020
+          Last Updated June 2020
         </Typography>
       </Typography>
 
@@ -105,8 +105,7 @@ export default withStyles(styles)(({classes}) => {
         </Typography>
         <Typography>
           As well as constantly improving this website I'm also working on a React Wordpress theme to use for my blogs.
-          I'm coding it using <strong>React + Graphql</strong>, using Wordpress as a headless CMS.
-          Implementing server-side rendering will greatily improve UX and SEO.
+          I'm coding it using <strong>Gatsby</strong>.
         </Typography>
       </div>
 

@@ -1,5 +1,15 @@
 export const jobs = [
   {
+    role: 'Front-end Developer Freelance',
+    url: '',
+    id: '',
+    date: 'Feb 2020, Present',
+    descriptionMain: `I help online business and startups building pixel perfect UIs with great focus on UX and reusable components. I am used to work on new features, from the concept and design stage to production release. I have experience working on large scale products used by millions.`,
+    descriptionTwo: '',
+    descriptionThree: '',
+    achievements: []
+  },
+  {
     role: 'Front-end Developer CarNextDoor.com.au',
     url: 'https://www.carnextdoor.com.au/',
     id: 'cnd',
@@ -41,6 +51,7 @@ export const jobs = [
       'I helped migrating the Community section of the site from legacy requireJS to SystemJS in order to adopt a modular Javascript and optimise the Critical Rendering Path of important SEO pages',
     ],
     links: [
+      'https://bits.freelancer.com/info/introduction',
       'https://www.freelancer.com/',
       'https://www.freelancer.com/contest/nasa',
       'https://www.freelancer.com/showcase',

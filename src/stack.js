@@ -1,7 +1,7 @@
 export const stack = [
   'JS, Typescript',
-  'React, Angular, Vue',
+  'React, Angular',
   'HTML, CSS, SASS/SMACSS/BEM/TailwindCSS',
   'CSS-in-JS',
-  'API'
+  'REST APIs'
 ]
