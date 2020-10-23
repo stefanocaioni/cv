@@ -18,7 +18,7 @@ import HeadsetIcon from '@material-ui/icons/Headset';
 const BOOKS_ENDPOINT =
   'https://www.googleapis.com/books/v1/users/108832331148662612349/bookshelves/3/volumes';
 
-const SONGS_ENDPOINT = 
+const SONGS_ENDPOINT =
   'https://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=stefanocaioni&api_key=bfa199dd17ba3f4adbcde4152357f41e&format=json';
 
 const styles = theme => ({
@@ -104,8 +104,7 @@ export default withStyles(styles)(({classes}) => {
           Creating
         </Typography>
         <Typography>
-          As well as constantly improving this website I'm also working on a React Wordpress theme to use for my blogs.
-          I'm coding it using <strong>Gatsby</strong>.
+          I'm having fun converting my Wordpress blog into a static site using VueJs.
         </Typography>
       </div>
 
@@ -150,7 +149,7 @@ export default withStyles(styles)(({classes}) => {
           })
         )}
       </div>
-      
+
       <div className={classes.section}>
         <Typography
           id='podcasts'
@@ -253,7 +252,7 @@ const useFetch = (url) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -266,9 +265,9 @@ const useFetch = (url) => {
       }
     }
     fetchData();
-    
+
   }, []);
-  
+
   return { data, isLoading, error } ;
 }
 
